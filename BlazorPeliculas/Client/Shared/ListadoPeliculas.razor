@@ -1,0 +1,41 @@
+﻿@using BlazorPeliculas.Shared.Entidades
+@if (Peliculas == null)
+{
+    <img src="https://s3.scoopwhoop.com/anj/loading/594155876.gif" alt="Cargando" />
+}
+else
+{
+    @foreach (var pelicula in Peliculas)
+    {
+        <div>
+            <p>
+                <b>T&iacute;tulo: @pelicula.Titulo</b>
+            </p>
+            <p>Fecha Lanzamiento: @pelicula.FechaLanzamiento.ToShortDateString()</p>
+        </div>
+    }
+}
+
+
+@code
+{
+    List<Pelicula>? Peliculas { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(3000);
+
+        Peliculas = ObtenerPeliculas();
+    }
+
+    List<Pelicula> ObtenerPeliculas()
+    {
+        var list = new List<Pelicula>
+        {
+            new() { Titulo = "Spiderman 2", FechaLanzamiento = DateTime.Parse("2004-11-30") },
+            new() { Titulo = "Everything, everywhere, all at once", FechaLanzamiento = DateTime.Parse("2022-05-01") },
+            new() { Titulo = "The Whale", FechaLanzamiento = DateTime.Parse("2023-02-10")}
+        };
+        return list;
+    }
+}
