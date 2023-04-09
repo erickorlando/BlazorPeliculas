@@ -6,12 +6,7 @@ else
 {
     @foreach (var pelicula in Peliculas)
     {
-        <div>
-            <p>
-                <b>T&iacute;tulo:</b> @pelicula.Titulo
-            </p>
-            <p><b> Fecha Lanzamiento:</b> @pelicula.FechaLanzamiento.ToString("dd MMM yyyy")</p>
-        </div>
+        <PeliculaIndividual Pelicula="pelicula" />
     }
 }
 

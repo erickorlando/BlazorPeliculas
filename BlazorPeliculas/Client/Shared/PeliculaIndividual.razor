@@ -1,0 +1,19 @@
+﻿<div>
+    <p>
+        <b>T&iacute;tulo:</b> @Pelicula.Titulo
+    
+    @if (@DateTime.Today.Subtract(Pelicula.FechaLanzamiento).Days <= 30)
+    {
+        <span style="color: red">(NUEVO!!)</span>
+    }
+    </p>
+    <p><b> Fecha Lanzamiento:</b> @Pelicula.FechaLanzamiento.ToString("dd MMM yyyy")</p>
+</div>
+
+@code {
+
+    [Parameter]
+    [EditorRequired]
+    public Pelicula Pelicula { get; set; } = null!;
+
+}
