@@ -1,6 +1,21 @@
 ﻿@page "/"
 
+
 <PageTitle>Peliculas</PageTitle>
 
 <h3>Peliculas</h3>
-<ListadoPeliculas />
+<ListadoPeliculas Peliculas="ObtenerPeliculas()"/>
+
+@code
+{
+    List<Pelicula> ObtenerPeliculas()
+    {
+        var list = new List<Pelicula>
+        {
+            new() { Titulo = "Spiderman 2", FechaLanzamiento = DateTime.Parse("2004-11-30") },
+            new() { Titulo = "Everything, everywhere, all at once", FechaLanzamiento = DateTime.Parse("2022-05-01") },
+            new() { Titulo = "The Whale", FechaLanzamiento = DateTime.Parse("2023-02-10")}
+        };
+        return list;
+    }
+}

@@ -8,11 +8,25 @@
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
+<ListadoPeliculas Peliculas="ObtenerPeliculas()" />
+
 @code {
     private int currentCount = 0;
 
     private void IncrementCount()
     {
         currentCount++;
+    }
+
+    List<Pelicula> ObtenerPeliculas()
+    {
+        var list = new List<Pelicula>
+        {
+            new() { Titulo = "Spiderman 1", FechaLanzamiento = DateTime.Parse("2002-10-30") },
+            new() { Titulo = "Inception", FechaLanzamiento = DateTime.Parse("2010-05-01") },
+            new() { Titulo = "The Shutter Island", FechaLanzamiento = DateTime.Parse("2011-03-11")},
+            new() { Titulo = "Captain America, The First Avenger", FechaLanzamiento = DateTime.Parse("2011-06-14")}
+        };
+        return list;
     }
 }
