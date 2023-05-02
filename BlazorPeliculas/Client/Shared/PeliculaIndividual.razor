@@ -8,6 +8,12 @@
     }
     </p>
     <p><b> Fecha Lanzamiento:</b> @Pelicula.FechaLanzamiento.ToString("dd MMM yyyy")</p>
+    
+    @if (MostrarBotones)
+    {
+        <input type="button" value="Borrar"/>
+    }
+
 </div>
 
 @code {
@@ -16,4 +22,6 @@
     [EditorRequired]
     public Pelicula Pelicula { get; set; } = null!;
 
+    [Parameter]
+    public bool MostrarBotones { get; set; }
 }
