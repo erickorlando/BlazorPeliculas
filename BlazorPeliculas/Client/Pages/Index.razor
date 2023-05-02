@@ -4,14 +4,23 @@
 <PageTitle>Peliculas</PageTitle>
 
 <h3>Peliculas</h3>
-<ListadoPeliculas Peliculas="ObtenerPeliculas()"/>
-
-<BindGetSetDemo />
+<ListadoPeliculas Peliculas="Peliculas" />
 
 @code
 {
-    List<Pelicula> ObtenerPeliculas()
+    public List<Pelicula>? Peliculas { get; set; }
+
+    protected override void OnAfterRender(bool firstRender)
     {
+        base.OnAfterRender(firstRender);
+        if (firstRender)
+            Peliculas = ObtenerPeliculas();
+    }
+
+    public List<Pelicula> ObtenerPeliculas()
+    {
+        Task.Delay(3000);
+
         var list = new List<Pelicula>
         {
             new() { Titulo = "Spiderman 2", FechaLanzamiento = DateTime.Parse("2004-11-30") },

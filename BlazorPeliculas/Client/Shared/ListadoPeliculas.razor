@@ -1,16 +1,15 @@
-﻿@if (Peliculas == null)
-{
-    <img src="https://s3.scoopwhoop.com/anj/loading/594155876.gif" alt="Cargando" />
-}
-else
-{
-    <input type="checkbox"  @bind="MostrarBotones" />
+﻿<input type="checkbox" @bind="MostrarBotones" />
+<p>
     <span>Mostrar Botones</span>
-    @foreach (var pelicula in Peliculas)
-    {
-        <PeliculaIndividual Pelicula="pelicula" MostrarBotones="MostrarBotones" />
-    }
-}
+</p>
+
+<ListadoGenerico Listado="Peliculas">
+    <HayRegistros Context="pelicula">
+        <PeliculaIndividual Pelicula="pelicula"
+                            MostrarBotones="MostrarBotones"
+                            EliminarPelicula="EliminarPelicula" />
+    </HayRegistros>
+</ListadoGenerico>
 
 
 @code
@@ -19,5 +18,10 @@ else
     public List<Pelicula>? Peliculas { get; set; }
 
 
-    public bool MostrarBotones { get; set; }
+    public bool MostrarBotones { get; set; } = true;
+
+    public void EliminarPelicula(Pelicula item)
+    {
+        Peliculas!.Remove(item);
+    }
 }
