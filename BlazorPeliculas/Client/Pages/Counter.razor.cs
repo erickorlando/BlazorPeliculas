@@ -8,6 +8,7 @@ public partial class Counter
 {
 
     [Inject] private IJSRuntime js { get; set; } = null!;
+    private IJSObjectReference modulo;
 
     private int _currentCount = 0;
     private static int CurrentCount = 0;
@@ -15,6 +16,9 @@ public partial class Counter
     [JSInvokable]
     public async Task IncrementCount()
     {
+        modulo = await js.InvokeAsync<IJSObjectReference>("import", "./js/counter.js");
+        await modulo.InvokeVoidAsync("mostrarAlerta", "Este es un mensaje");
+
         _currentCount++;
         CurrentCount++;
         await js.InvokeVoidAsync("pruebaPuntoNetStatic");
