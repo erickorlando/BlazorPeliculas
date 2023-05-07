@@ -3,12 +3,22 @@
 
 <PageTitle>Peliculas</PageTitle>
 
-<h3>Peliculas</h3>
-<ListadoPeliculas Peliculas="Peliculas" />
+<HeadContent>
+    <meta name="description" content="Pagina para visualizar peliculas"/>
+</HeadContent>
+
+<button @onclick="LimpiarPeliculas">Limpiar Peliculas</button>
+
+<div>
+    <h3>Peliculas</h3>
+    <ListadoPeliculas @ref="listadoPeliculas" Peliculas="Peliculas" />
+</div>
+
 
 @code
 {
     public List<Pelicula>? Peliculas { get; set; }
+    public ListadoPeliculas? listadoPeliculas;
 
     protected override void OnAfterRender(bool firstRender)
     {
@@ -17,9 +27,14 @@
             Peliculas = ObtenerPeliculas();
     }
 
+    public void LimpiarPeliculas()
+    {
+        listadoPeliculas!.LimpiarPeliculas();
+    }
+
     public List<Pelicula> ObtenerPeliculas()
     {
-        Task.Delay(3000);
+        Task.Delay(300);
 
         var list = new List<Pelicula>
         {

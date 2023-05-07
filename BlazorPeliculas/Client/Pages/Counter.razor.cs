@@ -10,6 +10,8 @@ public partial class Counter
     [Inject] private IJSRuntime js { get; set; } = null!;
     private IJSObjectReference modulo;
 
+    [CascadingParameter] protected AppState appState { get; set; } = default!;
+
     private int _currentCount = 0;
     private static int CurrentCount = 0;
 

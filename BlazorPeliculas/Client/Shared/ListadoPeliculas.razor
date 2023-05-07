@@ -19,6 +19,10 @@
     [Parameter]
     public List<Pelicula>? Peliculas { get; set; }
 
+    public void LimpiarPeliculas()
+    {
+        Peliculas!.Clear();
+    }
 
     public bool MostrarBotones { get; set; } = true;
 
